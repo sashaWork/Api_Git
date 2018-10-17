@@ -29,7 +29,7 @@ dependencies {
   compile 'com.android.support:recyclerview-v7:26.+'
   testCompile 'junit:junit:4.12'
 
-  compile 'com.google.android.gms:play-services-auth:9.0.1'
+//  compile 'com.google.android.gms:play-services-auth:9.0.1'
 
   // Rest
   compile 'com.squareup.retrofit2:retrofit:2.2.0'
