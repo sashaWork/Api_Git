@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -129,8 +130,9 @@ public class UserFollowersActivity extends AppCompatActivity {
                 Email email = response.body();
                 Log.d(LOG_TAG, "email: " + email);
                 if (email != null) {
-                    tv_user_email.setText(email.getUser_email()); //
-                    Log.d(LOG_TAG, "email2: " + email + "  " + email.getUser_email());
+                    tv_user_email.setText(email.getEmail()); //
+                    Toast.makeText(UserFollowersActivity.this, email.getEmail(), Toast.LENGTH_SHORT).show();
+                    Log.d(LOG_TAG, "email2: " + email + "  " + email.getEmail() + "  " + email.getVisibility());
                 } else {
                     showError();
                 }

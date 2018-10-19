@@ -10,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface GitHubService {
 
@@ -23,6 +24,15 @@ public interface GitHubService {
 
     @GET(ApiConstants.GITHUB_AUTHORIZE_ENDPOINT)
     Call<Autorization> getAutorization(@Path("authorizations") String owner, String owner2);
+
+
+//    @GET(ApiConstants.GITHUB_EMAIL_ENDPOINT)
+//    Call<Email> getToday(
+//            @Query("email") String lat,
+//            @Query("visibility") String lon
+//            @Query("units") String units,
+//            @Query("appid") String appid
+//    );
 
     @GET(ApiConstants.GITHUB_EMAIL_ENDPOINT)
     Call<Email> getEmail();

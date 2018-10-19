@@ -1,35 +1,52 @@
 package edu.uoc.android.restservice.rest.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Email {
 
     @SerializedName("email")
-    private String user_email;
-
+    @Expose
+    private String email;
     @SerializedName("verified")
-    private boolean verified;
-
+    @Expose
+    private Boolean verified;
     @SerializedName("primary")
-    private boolean login;
-
+    @Expose
+    private Boolean primary;
     @SerializedName("visibility")
-    private String user_visibility;
+    @Expose
+    private String visibility;
 
-
-    public String getUser_email() {
-        return user_email;
+    public String getEmail() {
+        return email;
     }
 
-    public boolean isVerified() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getVerified() {
         return verified;
     }
 
-    public boolean isLogin() {
-        return login;
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
     }
 
-    public String getUser_visibility() {
-        return user_visibility;
+    public Boolean getPrimary() {
+        return primary;
+    }
+
+    public void setPrimary(Boolean primary) {
+        this.primary = primary;
+    }
+
+    public String getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
     }
 }
