@@ -85,7 +85,7 @@ public class UserFollowersActivity extends AppCompatActivity {
                 if (owner != null) {
                     Picasso.with(UserFollowersActivity.this).load(owner.getAvatarUrl()).into(ivUser);
                     tvRepos.setText(getString(R.string.user_followers_repositories, owner.getPublicRepos()));
-                    tvFollowing.setText(getString(R.string.user_followers_following, owner.getFollowing()));
+                    tvFollowing.setText(getString(R.string.user_followers_following, owner.getId()));
                     getFollowers(username);
                 } else {
                     showError();

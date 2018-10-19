@@ -55,6 +55,7 @@ public class Followers {
     @SerializedName("site_admin")
     private Boolean siteAdmin;
 
+
     public String getLogin() {
         return login;
     }

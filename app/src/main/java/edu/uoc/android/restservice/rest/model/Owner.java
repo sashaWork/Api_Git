@@ -94,6 +94,17 @@ public class Owner {
     @SerializedName("updated_at")
     private String updatedAt;
 
+
+
+//    @SerializedName("authorization")
+//    private String authorization;
+//
+//    public String getAuthorization() {
+//        return authorization;
+//    }
+
+
+
     public String getLogin() {
         return login;
     }
