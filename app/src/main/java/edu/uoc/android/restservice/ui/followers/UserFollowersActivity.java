@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -26,6 +27,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserFollowersActivity extends AppCompatActivity {
+
+    final String LOG_TAG = "myLogs";
 
     private static final String BUNDLE_EXTRA_USERNAME = "username";
 
@@ -57,6 +60,7 @@ public class UserFollowersActivity extends AppCompatActivity {
         String username = extractUserName();
         initViews();
         getUserInformation(username);
+        getEmail();
     }
 
     @Override
@@ -96,10 +100,12 @@ public class UserFollowersActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Owner> call, Response<Owner> response) {
                 Owner owner = response.body();
+                Log.d(LOG_TAG, "owner: " + owner);
                 if (owner != null) {
                     Picasso.with(UserFollowersActivity.this).load(owner.getAvatarUrl()).into(ivUser);
                     tvRepos.setText(getString(R.string.user_followers_repositories, owner.getPublicRepos()));
                     tvFollowing.setText(getString(R.string.user_followers_following, owner.getFollowers()));
+                    Log.d(LOG_TAG, "owner2: " + owner + "   " + owner.getFollowers());
                     getFollowers(username);
                 } else {
                     showError();
@@ -112,21 +118,26 @@ public class UserFollowersActivity extends AppCompatActivity {
         });
     }
 
-    private void getEmail(String username) {
-        callEmail = new GitHubAdapter().getEmail(username);
+    private void getEmail() {
+
+        Log.d(LOG_TAG, "getEmail: " );
+
+        callEmail = new GitHubAdapter().getEmail();
         callEmail.enqueue(new Callback<Email>() {
-//            @SuppressLint("StringFormatMatches")
             @Override
             public void onResponse(Call<Email> call, Response<Email> response) {
                 Email email = response.body();
+                Log.d(LOG_TAG, "email: " + email);
                 if (email != null) {
                     tv_user_email.setText(email.getUser_email()); //
+                    Log.d(LOG_TAG, "email2: " + email + "  " + email.getUser_email());
                 } else {
                     showError();
                 }
             }
             @Override
             public void onFailure(Call<Email> call, Throwable t) {
+                Log.d(LOG_TAG, "showError: ");
                 showError();
             }
         });

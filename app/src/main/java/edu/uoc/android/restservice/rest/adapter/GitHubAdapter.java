@@ -24,8 +24,8 @@ public class GitHubAdapter extends BaseAdapter implements GitHubService {
     }
 
     @Override
-    public Call<Email> getEmail(String owner) {
-        return gitHubService.getEmail(owner);
+    public Call<Email> getEmail() {
+        return gitHubService.getEmail();
     }
 
     @Override

@@ -25,7 +25,7 @@ public interface GitHubService {
     Call<Autorization> getAutorization(@Path("authorizations") String owner, String owner2);
 
     @GET(ApiConstants.GITHUB_EMAIL_ENDPOINT)
-    Call<Email> getEmail(@Path("emails") String owner);
+    Call<Email> getEmail();
 
 //    @GET("api/Profiles/GetProfile?id={id}")
 //    Call<Autorization> getUser(@Path("id") String id, @Header("Authorization") String authHeader);

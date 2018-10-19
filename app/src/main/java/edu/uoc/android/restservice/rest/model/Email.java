@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Email {
 
-    @SerializedName("user_email")
+    @SerializedName("email")
     private String user_email;
 
     @SerializedName("verified")
@@ -13,7 +13,7 @@ public class Email {
     @SerializedName("primary")
     private boolean login;
 
-    @SerializedName("user_visibility")
+    @SerializedName("visibility")
     private String user_visibility;
 
 
