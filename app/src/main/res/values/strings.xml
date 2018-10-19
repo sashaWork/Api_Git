@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">GitHub Followers</string>
-    
+    <string name="app_name">ApiGit</string>
+
     <!-- Enter user -->
     <string name="enter_user_hint">User</string>
     <string name="enter_user_button">Explore followers</string>
+
+    <string name="hint_email">email.com</string>
+    <string name="hint_pass">password</string>
+    <string name="btnEnter">Enter</string>
+    <string name="cbSave">Remamber</string>
     
     <!-- User followers -->
     <string name="user_followers_repositories">Repositories: %d</string>
