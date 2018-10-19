@@ -2,6 +2,7 @@ package edu.uoc.android.restservice.rest.service;
 
 import edu.uoc.android.restservice.rest.contants.ApiConstants;
 import edu.uoc.android.restservice.rest.model.Autorization;
+import edu.uoc.android.restservice.rest.model.Email;
 import edu.uoc.android.restservice.rest.model.Followers;
 import edu.uoc.android.restservice.rest.model.Owner;
 import java.util.List;
@@ -22,6 +23,9 @@ public interface GitHubService {
 
     @GET(ApiConstants.GITHUB_AUTHORIZE_ENDPOINT)
     Call<Autorization> getAutorization(@Path("authorizations") String owner, String owner2);
+
+    @GET(ApiConstants.GITHUB_EMAIL_ENDPOINT)
+    Call<Email> getEmail(@Path("emails") String owner);
 
 //    @GET("api/Profiles/GetProfile?id={id}")
 //    Call<Autorization> getUser(@Path("id") String id, @Header("Authorization") String authHeader);

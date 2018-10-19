@@ -8,11 +8,13 @@
     <string name="hint_email">email.com</string>
     <string name="hint_pass">password</string>
     <string name="btnEnter">Enter</string>
-    <string name="cbSave">Remamber</string>
+    <string name="cbSave">Remember</string>
     
     <!-- User followers -->
     <string name="user_followers_repositories">Repositories: %d</string>
     <string name="user_followers_following">Following: %d</string>
     <string name="user_followers_title">Followers</string>
     <string name="user_followers_error">Something went wrong</string>
+
+    <string name="user_email">Email: </string>
 </resources>

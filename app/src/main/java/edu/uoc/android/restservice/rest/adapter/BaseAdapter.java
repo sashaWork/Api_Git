@@ -39,7 +39,6 @@ class BaseAdapter {
         }
     }
 
-
 //    private OkHttpClient getClient() {
 //        OkHttpClient.Builder builderClientHttp = new OkHttpClient().newBuilder();
 //        // Show HTTPS logs in dev mode

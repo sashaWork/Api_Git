@@ -1,5 +1,6 @@
 package edu.uoc.android.restservice.ui.followers;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +10,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
+
 import edu.uoc.android.restservice.R;
 import edu.uoc.android.restservice.rest.adapter.GitHubAdapter;
+import edu.uoc.android.restservice.rest.model.Email;
 import edu.uoc.android.restservice.rest.model.Followers;
 import edu.uoc.android.restservice.rest.model.Owner;
+
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,9 +37,12 @@ public class UserFollowersActivity extends AppCompatActivity {
     private RecyclerView rvFollowers;
     private ImageView ivUser;
 
+    private TextView tv_user_email;
+
     // Rest
     private Call<Owner> callOwner;
     private Call<List<Followers>> callFollowers;
+    private Call<Email> callEmail;
 
     public static Intent makeIntent(Context context, String username) {
         Intent intent = new Intent(context, UserFollowersActivity.class);
@@ -59,6 +68,9 @@ public class UserFollowersActivity extends AppCompatActivity {
         if (callFollowers != null) {
             callFollowers.cancel();
         }
+        if (callEmail != null) {
+            callEmail.cancel();
+        }
     }
 
     private String extractUserName() {
@@ -73,6 +85,8 @@ public class UserFollowersActivity extends AppCompatActivity {
         tvError = (TextView) findViewById(R.id.user_followers_error_text);
         rvFollowers = (RecyclerView) findViewById(R.id.user_followers_recycler_view);
         ivUser = (ImageView) findViewById(R.id.user_followers_profile_image);
+
+        tv_user_email = (TextView) findViewById(R.id.tv_user_email);
     }
 
     private void getUserInformation(final String username) {
@@ -85,15 +99,34 @@ public class UserFollowersActivity extends AppCompatActivity {
                 if (owner != null) {
                     Picasso.with(UserFollowersActivity.this).load(owner.getAvatarUrl()).into(ivUser);
                     tvRepos.setText(getString(R.string.user_followers_repositories, owner.getPublicRepos()));
-                    tvFollowing.setText(getString(R.string.user_followers_following, owner.getId()));
+                    tvFollowing.setText(getString(R.string.user_followers_following, owner.getFollowers()));
                     getFollowers(username);
                 } else {
                     showError();
                 }
             }
-
             @Override
             public void onFailure(Call<Owner> call, Throwable t) {
+                showError();
+            }
+        });
+    }
+
+    private void getEmail(String username) {
+        callEmail = new GitHubAdapter().getEmail(username);
+        callEmail.enqueue(new Callback<Email>() {
+//            @SuppressLint("StringFormatMatches")
+            @Override
+            public void onResponse(Call<Email> call, Response<Email> response) {
+                Email email = response.body();
+                if (email != null) {
+                    tv_user_email.setText(email.getUser_email()); //
+                } else {
+                    showError();
+                }
+            }
+            @Override
+            public void onFailure(Call<Email> call, Throwable t) {
                 showError();
             }
         });
@@ -113,7 +146,6 @@ public class UserFollowersActivity extends AppCompatActivity {
                     showError();
                 }
             }
-
             @Override
             public void onFailure(Call<List<Followers>> call, Throwable t) {
                 showError();
