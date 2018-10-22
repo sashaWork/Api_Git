@@ -17,4 +17,6 @@
     <string name="user_followers_error">Something went wrong</string>
 
     <string name="user_email">Email: </string>
+
+    <string name="btnOffline">Offline</string>
 </resources>
