@@ -12,9 +12,8 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="edu.uoc.android.restservice.MainActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:name="edu.uoc.android.restservice.core.model.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -23,19 +22,12 @@
         </activity>
 
         <activity
-            android:name=".ui.enter.EnterUserActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+            android:name=".repo.ExitActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".ui.followers.UserFollowersActivity"
-            android:parentActivityName=".ui.enter.EnterUserActivity"
+            android:name=".repo.GitActivity"
             android:screenOrientation="portrait"/>
 
     </application>
